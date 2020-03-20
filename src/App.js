@@ -1,11 +1,22 @@
-import React from 'react';
+import React from "react";
+import './styles.css';
+import UserForm from './components/UserForm';
+import { createStore, applyMiddleware } from 'redux';
+import { usersReducer as reducer } from './reducers/usersReducers';
+import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
+import UsersList from './components/UsersList';
 
-function App() {
+const store = createStore( reducer, applyMiddleware(thunk) );
+
+export default function App() {
   return (
-    <div>
-      <h1>Hello World!</h1>
-    </div>
+    <Provider store = { store } >
+      <div>
+        <h1>User List</h1>
+        <UserForm />
+        <UsersList />
+      </div>
+    </Provider>
   );
 }
-
-export default App;
