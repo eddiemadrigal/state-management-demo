@@ -1,6 +1,7 @@
 import React from "react";
 import './styles.css';
 import UserForm from './components/UserForm';
+import NewUser from './components/NewUser';
 import { createStore, applyMiddleware } from 'redux';
 import { usersReducer as reducer } from './reducers/usersReducers';
 import { Provider } from 'react-redux';
@@ -16,6 +17,7 @@ export default function App() {
         <h1>User List</h1>
         <UserForm />
         <UsersList />
+        <NewUser />
       </div>
     </Provider>
   );

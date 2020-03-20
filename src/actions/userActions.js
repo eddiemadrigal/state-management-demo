@@ -9,14 +9,14 @@ export const getData = () => dispatch => {
     const newData = 'Eddie';
 
     axios
-        .post(`http://jsonplaceholder.typicode.com/users`, newData)
+        .post(`https://jsonplaceholder.typicode.com/users`, newData)
         .then( res => {
             console.log(res)
         })
         .catch( err => console.log( err ))
 
     axios
-        .get( `http://jsonplaceholder.typicode.com/users` )
+        .get( `https://jsonplaceholder.typicode.com/users` )
         .then( res => {
             console.log(res.data);
             dispatch({ type: UPDATE_USERS, payload: res.data })  
@@ -24,6 +24,16 @@ export const getData = () => dispatch => {
         .catch( err => {
             console.log( err );
             dispatch({ type: SET_ERROR, payload: 'Error fetching data from the API' });
+        });
+
+    axios.put('https://jsonplaceholder.typicode.com/users/1', {
+        name: 'Eddie Madrigal'
+        })
+        .then( res => {
+            console.log( res );
+        })
+        .catch( err => {
+            console.log( err );
         });
 
     
