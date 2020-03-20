@@ -2,20 +2,24 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { getData } from '../actions/userActions';
 
-const NewUser = props => {
+const UserForm = props => {
     const handleGetData = e => {
         e.preventDefault();
         props.getData();
     };
 
     return (
-        <>
-            { props.isFetchingData ? (
-                <div>Fetching Data ...</div>
-            ) : (
-                <button onClick={ handleGetData }>Get Data</button>
-            )}
-        </>
+        <form onSubmit={handleGetData}>
+        <label>
+            First Name:
+            <input
+            type="text"
+            value=""
+            onChange=""
+            />
+        </label>
+        <input type="submit" value="Submit" />
+        </form>
     );
 
 };
@@ -29,4 +33,4 @@ const mapStateToProps = state => {
 export default connect(
     mapStateToProps,
     { getData }
-)(NewUser);
+)(UserForm);
